@@ -15,9 +15,51 @@ namespace PizzariaLN2
 {
     public partial class Form1 : Form
     {
+        private int id;
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void UpdateListView()
+        {
+            listView1.Items.Clear();
+
+            Connection conn = new Connection();
+            SqlCommand sqlCom = new SqlCommand();
+
+            sqlCom.Connection = conn.ReturnConnection();
+            sqlCom.CommandText = "SELECT * FROM Table_1";
+
+            try
+            {
+                SqlDataReader dr = sqlCom.ExecuteReader();
+
+                //Enquanto for possível continuar a leitura das linhas que foram retornadas na consulta, execute.
+                while (dr.Read())
+                {
+                    int id = (int)dr["ID"];
+                    string name = (string)dr["NOME"];
+                    decimal tel = (decimal)dr["TELEFONE"];
+                    decimal cpf = (decimal)dr["CPF"];
+
+                    ListViewItem lv = new ListViewItem(id.ToString());
+                    lv.SubItems.Add(name);
+                    lv.SubItems.Add(tel.ToString());
+                    lv.SubItems.Add(cpf.ToString());
+                    listView1.Items.Add(lv);
+
+                }
+                dr.Close();
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message);
+            }
+            finally
+            {
+                conn.CloseConnection();
+            }
         }
 
         private void btnMessage_Click(object sender, EventArgs e)
@@ -27,58 +69,63 @@ namespace PizzariaLN2
             SqlCommand sqlCommand = new SqlCommand();
 
             sqlCommand.Connection = connection.ReturnConnection();
-            sqlCommand.CommandText = @"INSERT INTO Usuario VALUES (@nome, @telefone, @cpf)";
+            sqlCommand.CommandText = @"INSERT INTO Table_1 VALUES (@nome, @telefone, @cpf)";
 
             sqlCommand.Parameters.AddWithValue("@nome", txbName.Text);
             sqlCommand.Parameters.AddWithValue("@telefone", txbPhone.Text);
             sqlCommand.Parameters.AddWithValue("@cpf", txbCPF.Text);
 
             sqlCommand.ExecuteNonQuery();
+            txbName.Clear();
+            txbPhone.Clear();
+            txbCPF.Clear();
 
         }
 
-            //private void btnMessage_Click(object sender, EventArgs e)
-            //{
-            //    if (validarForm())
-            //        Salvar();
-
-            //    string name = txbName.Text;
-            //    string phone = txbPhone.Text;
-            //    string cpf = txbCPF.Text;
-
-            //    string message = "Nome: " + name +
-            //                     "\nTelefone: " + phone +
-            //                     "\nCPF: " + cpf;
-
-            //    MessageBox.Show(message, "ATENÇÃO", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //}
-
-            //private void Salvar()
-            //{
-            //    MessageBox.Show("Os dados foram salvos!");
-            //}
-
-            //private bool validarForm()
-            //{
-            //    if (txbName.Text == "")
-            //    {
-            //        MessageBox.Show("Informe o nome");
-            //        txbName.Focus();
-            //        return false;
-            //    }
-            //    else if(txbPhone.Text == "")
-            //    {
-            //        MessageBox.Show("Informe o telefone");
-            //        txbPhone.Focus();
-            //        return false;
-            //    }
-            //    else if (txbCPF.Text == "")
-            //    {
-            //        MessageBox.Show("Informe o CPF");
-            //        txbCPF.Focus();
-            //        return false;
-            //    }
-            //    return true;
-            //}
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            UpdateListView();
         }
+
+        private void listView1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            int index;
+            index = listView1.FocusedItem.Index;
+            id = int.Parse(listView1.Items[index].SubItems[0].Text);
+            txbName.Text = listView1.Items[index].SubItems[1].Text;
+            txbPhone.Text = listView1.Items[index].SubItems[2].Text;
+            txbCPF.Text = listView1.Items[index].SubItems[3].Text;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Connection connection = new Connection();
+            SqlCommand sqlCommand = new SqlCommand();
+
+            sqlCommand.Connection = connection.ReturnConnection();
+            sqlCommand.CommandText = @"UPDATE Table_1 SET 
+    NOME       = @name, 
+    CPF        = @cpf, 
+    TELEFONE  = @telefone,  
+    WHERE ID   = @id";
+
+            sqlCommand.Parameters.AddWithValue("@nome", txbName.Text);
+            sqlCommand.Parameters.AddWithValue("@telefone", txbPhone.Text);
+            sqlCommand.Parameters.AddWithValue("@cpf", txbCPF.Text);
+            sqlCommand.Parameters.AddWithValue("@id", id);
+
+            sqlCommand.ExecuteNonQuery();
+
+            MessageBox.Show("Cadastrado com sucesso",
+                "AVISO",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+
+            txbName.Clear();
+            txbPhone.Clear();
+            txbCPF.Clear();
+
+            UpdateListView();
+        }
+    }
 }
