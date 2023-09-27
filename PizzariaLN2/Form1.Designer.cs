@@ -40,15 +40,17 @@
             this.txbPhone = new System.Windows.Forms.MaskedTextBox();
             this.txbCPF = new System.Windows.Forms.MaskedTextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.CPF = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // btnMessage
             // 
             this.btnMessage.BackColor = System.Drawing.Color.IndianRed;
             this.btnMessage.ForeColor = System.Drawing.Color.Black;
-            this.btnMessage.Location = new System.Drawing.Point(218, 98);
+            this.btnMessage.Location = new System.Drawing.Point(218, 56);
             this.btnMessage.Name = "btnMessage";
-            this.btnMessage.Size = new System.Drawing.Size(177, 73);
+            this.btnMessage.Size = new System.Drawing.Size(177, 52);
             this.btnMessage.TabIndex = 0;
             this.btnMessage.Text = "Salvar";
             this.btnMessage.UseVisualStyleBackColor = false;
@@ -96,12 +98,13 @@
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
-            this.columnHeader3});
+            this.columnHeader3,
+            this.CPF});
             this.listView1.FullRowSelect = true;
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(111, 268);
+            this.listView1.Location = new System.Drawing.Point(42, 259);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(182, 97);
+            this.listView1.Size = new System.Drawing.Size(332, 97);
             this.listView1.TabIndex = 9;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -109,15 +112,18 @@
             // 
             // columnHeader1
             // 
-            this.columnHeader1.Text = "Nome";
+            this.columnHeader1.Text = "ID";
+            this.columnHeader1.Width = 87;
             // 
             // columnHeader2
             // 
-            this.columnHeader2.Text = "Telefone";
+            this.columnHeader2.Text = "Nome";
+            this.columnHeader2.Width = 70;
             // 
             // columnHeader3
             // 
-            this.columnHeader3.Text = "CPF";
+            this.columnHeader3.Text = "Telefone";
+            this.columnHeader3.Width = 79;
             // 
             // txbPhone
             // 
@@ -141,13 +147,29 @@
             // 
             this.button1.BackColor = System.Drawing.Color.IndianRed;
             this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(218, 184);
+            this.button1.Location = new System.Drawing.Point(218, 114);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(177, 73);
+            this.button1.Size = new System.Drawing.Size(177, 52);
             this.button1.TabIndex = 10;
             this.button1.Text = "Editar";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.IndianRed;
+            this.button2.ForeColor = System.Drawing.Color.Black;
+            this.button2.Location = new System.Drawing.Point(218, 172);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(177, 57);
+            this.button2.TabIndex = 11;
+            this.button2.Text = "Excluir";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // CPF
+            // 
+            this.CPF.Text = "CPF";
             // 
             // Form1
             // 
@@ -155,6 +177,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSalmon;
             this.ClientSize = new System.Drawing.Size(448, 398);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txbCPF);
             this.Controls.Add(this.txbPhone);
@@ -186,6 +209,8 @@
         private System.Windows.Forms.MaskedTextBox txbPhone;
         private System.Windows.Forms.MaskedTextBox txbCPF;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ColumnHeader CPF;
     }
 }
 

@@ -76,9 +76,16 @@ namespace PizzariaLN2
             sqlCommand.Parameters.AddWithValue("@cpf", txbCPF.Text);
 
             sqlCommand.ExecuteNonQuery();
+            MessageBox.Show("Cadastrado com sucesso",
+                "AVISO",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+
             txbName.Clear();
             txbPhone.Clear();
             txbCPF.Clear();
+
+            UpdateListView();
 
         }
 
@@ -104,11 +111,12 @@ namespace PizzariaLN2
 
             sqlCommand.Connection = connection.ReturnConnection();
             sqlCommand.CommandText = @"UPDATE Table_1 SET 
-    NOME       = @name, 
-    CPF        = @cpf, 
-    TELEFONE  = @telefone,  
-    WHERE ID   = @id";
+            NOME       = @nome, 
+            CPF        = @cpf, 
+            TELEFONE   = @telefone  
+            WHERE ID   = @id";
 
+            //idêntico ao do botão insert
             sqlCommand.Parameters.AddWithValue("@nome", txbName.Text);
             sqlCommand.Parameters.AddWithValue("@telefone", txbPhone.Text);
             sqlCommand.Parameters.AddWithValue("@cpf", txbCPF.Text);
@@ -116,7 +124,7 @@ namespace PizzariaLN2
 
             sqlCommand.ExecuteNonQuery();
 
-            MessageBox.Show("Cadastrado com sucesso",
+            MessageBox.Show("Atualizado com sucesso",
                 "AVISO",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
@@ -126,6 +134,38 @@ namespace PizzariaLN2
             txbCPF.Clear();
 
             UpdateListView();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Connection connection = new Connection();
+            SqlCommand sqlCommand = new SqlCommand();
+
+            sqlCommand.Connection = connection.ReturnConnection();
+            sqlCommand.CommandText = @"DELETE FROM Table_1 WHERE Id = @id";
+            sqlCommand.Parameters.AddWithValue("@id", id);
+            try
+            {
+                sqlCommand.ExecuteNonQuery();
+            }
+            catch (Exception err)
+            {
+                throw new Exception("Erro: Problemas ao excluir usuário no banco.\n" + err.Message);
+            }
+            finally
+            {
+                connection.CloseConnection();
+                MessageBox.Show("Excluido com sucesso",
+                "AVISO",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+
+                txbName.Clear();
+                txbPhone.Clear();
+                txbCPF.Clear();
+
+                UpdateListView();
+            }
         }
     }
 }
