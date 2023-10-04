@@ -138,34 +138,23 @@ namespace PizzariaLN2
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Connection connection = new Connection();
-            SqlCommand sqlCommand = new SqlCommand();
+            //Chamando método de exclussão
+            //UsuarioDAO nomeDoObj = new UsuarioDAO();
+            UsuarioDAO dadosUser = new UsuarioDAO();
+            dadosUser.DeleteUser(id);
 
-            sqlCommand.Connection = connection.ReturnConnection();
-            sqlCommand.CommandText = @"DELETE FROM Table_1 WHERE Id = @id";
-            sqlCommand.Parameters.AddWithValue("@id", id);
-            try
-            {
-                sqlCommand.ExecuteNonQuery();
-            }
-            catch (Exception err)
-            {
-                throw new Exception("Erro: Problemas ao excluir usuário no banco.\n" + err.Message);
-            }
-            finally
-            {
-                connection.CloseConnection();
-                MessageBox.Show("Excluido com sucesso",
-                "AVISO",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+            MessageBox.Show("Excluido com sucesso",
+            "AVISO",
+            MessageBoxButtons.OK,
+            MessageBoxIcon.Information);
 
-                txbName.Clear();
-                txbPhone.Clear();
-                txbCPF.Clear();
+            //Limpando campos
+            txbName.Clear();
+            txbPhone.Clear();
+            txbCPF.Clear();
 
-                UpdateListView();
-            }
+            //Atualizando listView
+            UpdateListView();
         }
     }
 }
