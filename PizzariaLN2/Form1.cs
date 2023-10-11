@@ -24,69 +24,60 @@ namespace PizzariaLN2
         private void UpdateListView()
         {
             listView1.Items.Clear();
-
-            Connection conn = new Connection();
-            SqlCommand sqlCom = new SqlCommand();
-
-            sqlCom.Connection = conn.ReturnConnection();
-            sqlCom.CommandText = "SELECT * FROM Table_1";
+            UsuarioDAO dadosUser = new UsuarioDAO();
+            List<Usuario> users = dadosUser.SelectUser();
 
             try
             {
-                SqlDataReader dr = sqlCom.ExecuteReader();
-
-                //Enquanto for possível continuar a leitura das linhas que foram retornadas na consulta, execute.
-                while (dr.Read())
+                foreach (Usuario user in users)
                 {
-                    int id = (int)dr["ID"];
-                    string name = (string)dr["NOME"];
-                    decimal tel = (decimal)dr["TELEFONE"];
-                    decimal cpf = (decimal)dr["CPF"];
 
-                    ListViewItem lv = new ListViewItem(id.ToString());
-                    lv.SubItems.Add(name);
-                    lv.SubItems.Add(tel.ToString());
-                    lv.SubItems.Add(cpf.ToString());
+                    ListViewItem lv = new ListViewItem(user.Id.ToString());
+                    lv.SubItems.Add(user.Name);
+                    lv.SubItems.Add(user.Phone.ToString());
+                    lv.SubItems.Add(user.Cpf.ToString());
                     listView1.Items.Add(lv);
-
                 }
-                dr.Close();
             }
             catch (Exception err)
             {
                 MessageBox.Show(err.Message);
             }
-            finally
-            {
-                conn.CloseConnection();
-            }
         }
 
         private void btnMessage_Click(object sender, EventArgs e)
         {
-            //esse Connection verde água é o nome da sua classe.
-            Connection connection = new Connection();
-            SqlCommand sqlCommand = new SqlCommand();
+            //(4) -  (ver classe usuário).
+            try
+            {
+                //Criar objeto da classe Usuario.
+                //esse verde água é o nome da sua classe.
+                Usuario user = new Usuario(
+                    txbName.Text,
+                    txbPhone.Text,
+                    txbCPF.Text
+                    );
 
-            sqlCommand.Connection = connection.ReturnConnection();
-            sqlCommand.CommandText = @"INSERT INTO Table_1 VALUES (@nome, @telefone, @cpf)";
+                //Chamando método de inserir (inserção).
+                //UsuarioDAO nomeDoObj = new UsuarioDAO();
+                UsuarioDAO dadosUser = new UsuarioDAO();
+                dadosUser.InsertUser(user);
 
-            sqlCommand.Parameters.AddWithValue("@nome", txbName.Text);
-            sqlCommand.Parameters.AddWithValue("@telefone", txbPhone.Text);
-            sqlCommand.Parameters.AddWithValue("@cpf", txbCPF.Text);
-
-            sqlCommand.ExecuteNonQuery();
-            MessageBox.Show("Cadastrado com sucesso",
-                "AVISO",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+                MessageBox.Show("Cadastrado com sucesso",
+                    "AVISO",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message);
+            }
 
             txbName.Clear();
             txbPhone.Clear();
             txbCPF.Clear();
 
             UpdateListView();
-
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -106,28 +97,32 @@ namespace PizzariaLN2
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Connection connection = new Connection();
-            SqlCommand sqlCommand = new SqlCommand();
+            //(4) -  (ver classe usuário).
+            try
+            {
+                //Criar objeto da classe Usuario.
+                //esse verde água é o nome da sua classe.
+                Usuario user = new Usuario(
+                    txbName.Text,
+                    txbPhone.Text,
+                    txbCPF.Text,
+                    id
+                    );
 
-            sqlCommand.Connection = connection.ReturnConnection();
-            sqlCommand.CommandText = @"UPDATE Table_1 SET 
-            NOME       = @nome, 
-            CPF        = @cpf, 
-            TELEFONE   = @telefone  
-            WHERE ID   = @id";
+                //Chamando método de inserir (inserção).
+                //UsuarioDAO nomeDoObj = new UsuarioDAO();
+                UsuarioDAO dadosUser = new UsuarioDAO();
+                dadosUser.UpdateUser(user);
 
-            //idêntico ao do botão insert
-            sqlCommand.Parameters.AddWithValue("@nome", txbName.Text);
-            sqlCommand.Parameters.AddWithValue("@telefone", txbPhone.Text);
-            sqlCommand.Parameters.AddWithValue("@cpf", txbCPF.Text);
-            sqlCommand.Parameters.AddWithValue("@id", id);
-
-            sqlCommand.ExecuteNonQuery();
-
-            MessageBox.Show("Atualizado com sucesso",
-                "AVISO",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+                MessageBox.Show("Atualizado com sucesso",
+                    "AVISO",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message);
+            }
 
             txbName.Clear();
             txbPhone.Clear();
