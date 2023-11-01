@@ -38,21 +38,21 @@ namespace PizzariaLN2
         //(1)
         private int _id;
         private string _name;
-        private string _phone;
-        private string _cpf;
+        private decimal _phone;
+        private decimal _cpf;
 
         //(2)
         public Usuario(string name,
-                        string phone,
-                        string cpf)
+                        decimal phone,
+                        decimal cpf)
         {
             Name = name;
             Phone = phone;
             Cpf = cpf;
         }
         public Usuario(int id, string name,
-                        string phone,
-                        string cpf)
+                        decimal phone,
+                        decimal cpf)
         {
             Id = id;
             Name = name;
@@ -76,18 +76,18 @@ namespace PizzariaLN2
             }
             get { return _name; }
         }
-        public string Phone
+        public decimal Phone
         {
             set {
-                if (string.IsNullOrEmpty(value))
+                if (string.IsNullOrEmpty(value.ToString()))
                     throw new Exception("Campo telefone está vazio"); //(4)
                 _phone = value; }
             get { return _phone; }
         }
-        public string Cpf
+        public decimal Cpf
         {
             set {
-                if (string.IsNullOrEmpty(value))
+                if (string.IsNullOrEmpty(value.ToString()))
                     throw new Exception("Campo CPF está vazio");
                 _cpf = value; }
             get { return _cpf; }

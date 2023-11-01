@@ -54,8 +54,8 @@ namespace PizzariaLN2
                 //esse verde água é o nome da sua classe.
                 Usuario user = new Usuario(
                     txbName.Text,
-                    txbPhone.Text,
-                    txbCPF.Text
+                    Convert.ToDecimal(txbPhone.Text),
+                    Convert.ToDecimal(txbCPF.Text)
                     );
 
                 //Chamando método de inserir (inserção).
@@ -103,10 +103,10 @@ namespace PizzariaLN2
                 //Criar objeto da classe Usuario.
                 //esse verde água é o nome da sua classe.
                 Usuario user = new Usuario(
+                    id,
                     txbName.Text,
-                    txbPhone.Text,
-                    txbCPF.Text,
-                    id
+                    Convert.ToDecimal(txbPhone.Text),
+                    Convert.ToDecimal(txbCPF.Text)
                     );
 
                 //Chamando método de inserir (inserção).
