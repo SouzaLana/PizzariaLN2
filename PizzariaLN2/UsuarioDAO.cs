@@ -19,6 +19,40 @@ namespace PizzariaLN2
         //(1)
         //void é quando não tem que retornar nada.
 
+        public bool Login(string user, string pass)
+        {
+            Connection conn = new Connection();
+            SqlCommand sqlCom = new SqlCommand();
+
+            sqlCom.Connection = conn.ReturnConnection();
+            sqlCom.CommandText = "SELECT * FROM Table_1 where TELEFONE = @USUARIO and CPF = @SENHA";
+
+            sqlCom.Parameters.AddWithValue("@USUARIO", user);
+            sqlCom.Parameters.AddWithValue("@SENHA", pass);
+
+           
+            try
+            {
+                SqlDataReader dr = sqlCom.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    dr.Close();
+                    return true;
+                }
+                   
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message);
+            }
+            finally
+            {
+
+                conn.CloseConnection();
+            }
+            return false;
+        }
+
         public List<Usuario> SelectUser()
         {
             Connection conn = new Connection();
