@@ -13,10 +13,14 @@ namespace PizzariaLN2
         /// </summary>
         [STAThread]
         static void Main()
-        {
+        {  
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            // Na program.cs ela chama o form1.cs e tem que mudar isso para Login, ou seja, quando iniciar vai aparecer a tela de login.
             Application.Run(new Login());
+            //Criar outro método para o UsuarioDAO
+            //if(dr.HasRows)
+            //   return true;
         }
     }
 }

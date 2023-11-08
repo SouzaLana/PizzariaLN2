@@ -151,5 +151,11 @@ namespace PizzariaLN2
             //Atualizando listView
             UpdateListView();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Login TelaLogin = new Login();
+            TelaLogin.ShowDialog();
+        }
     }
 }

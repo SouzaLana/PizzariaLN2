@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace PizzariaLN2
 {
@@ -19,16 +20,42 @@ namespace PizzariaLN2
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Usuario user = new Usuario(
+                txbName1.Text
+                );
+            Usuario pass = new Usuario(
+                Convert.ToDecimal(txbCPF1.Text)
+                );
+
+            //inserir dado
             UsuarioDAO dadosUser = new UsuarioDAO();
-            if (dadosUser.Login("1234","12345"))
+            if (dadosUser.Login(user, pass))
             {
-                Form1 form1 = new Form1();
-                form1.ShowDialog();
+                // instânciando um objeto da classe form1 (esses são os comando para abrir outra tela)
+                Form2 tela = new Form2();
+                tela.ShowDialog();
             }
             else
             {
                 MessageBox.Show("Usuário inválido");
             }
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Form1 tela = new Form1();
+            tela.ShowDialog();
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            txbName1.Clear();
+            txbCPF1.Clear();
         }
     }
 }

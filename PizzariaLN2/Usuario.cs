@@ -60,6 +60,16 @@ namespace PizzariaLN2
             Cpf = cpf;
         }
 
+        public Usuario(string name)
+        {
+            Name = name;
+        }
+
+        public Usuario(decimal cpf)
+        {
+            Cpf = cpf;
+        }
+
         //(3)
         //Propriedades
         public int Id
