@@ -32,7 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txbName1 = new System.Windows.Forms.TextBox();
-            this.txbCPF1 = new System.Windows.Forms.TextBox();
+            this.txbPASS1 = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -57,9 +57,9 @@
             this.label1.Location = new System.Drawing.Point(141, 39);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 17);
+            this.label1.Size = new System.Drawing.Size(34, 17);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Nome";
+            this.label1.Text = "CPF";
             // 
             // label2
             // 
@@ -68,9 +68,9 @@
             this.label2.Location = new System.Drawing.Point(142, 101);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(34, 17);
+            this.label2.Size = new System.Drawing.Size(49, 17);
             this.label2.TabIndex = 2;
-            this.label2.Text = "CPF";
+            this.label2.Text = "Senha";
             // 
             // txbName1
             // 
@@ -81,14 +81,14 @@
             this.txbName1.Size = new System.Drawing.Size(234, 23);
             this.txbName1.TabIndex = 3;
             // 
-            // txbCPF1
+            // txbPASS1
             // 
-            this.txbCPF1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.txbCPF1.Location = new System.Drawing.Point(144, 121);
-            this.txbCPF1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.txbCPF1.Name = "txbCPF1";
-            this.txbCPF1.Size = new System.Drawing.Size(234, 23);
-            this.txbCPF1.TabIndex = 4;
+            this.txbPASS1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.txbPASS1.Location = new System.Drawing.Point(144, 121);
+            this.txbPASS1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.txbPASS1.Name = "txbPASS1";
+            this.txbPASS1.Size = new System.Drawing.Size(234, 23);
+            this.txbPASS1.TabIndex = 4;
             // 
             // button2
             // 
@@ -120,7 +120,7 @@
             this.ClientSize = new System.Drawing.Size(542, 282);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.txbCPF1);
+            this.Controls.Add(this.txbPASS1);
             this.Controls.Add(this.txbName1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -141,7 +141,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txbName1;
-        private System.Windows.Forms.TextBox txbCPF1;
+        private System.Windows.Forms.TextBox txbPASS1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnClear;
     }

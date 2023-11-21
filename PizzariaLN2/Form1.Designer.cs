@@ -42,14 +42,15 @@
             this.txbCPF = new System.Windows.Forms.MaskedTextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.txbPASS = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnMessage
             // 
             this.btnMessage.BackColor = System.Drawing.Color.IndianRed;
             this.btnMessage.ForeColor = System.Drawing.Color.Black;
-            this.btnMessage.Location = new System.Drawing.Point(214, 14);
+            this.btnMessage.Location = new System.Drawing.Point(214, 58);
             this.btnMessage.Name = "btnMessage";
             this.btnMessage.Size = new System.Drawing.Size(177, 52);
             this.btnMessage.TabIndex = 0;
@@ -152,7 +153,7 @@
             // 
             this.button1.BackColor = System.Drawing.Color.IndianRed;
             this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(214, 72);
+            this.button1.Location = new System.Drawing.Point(214, 116);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(177, 52);
             this.button1.TabIndex = 10;
@@ -164,7 +165,7 @@
             // 
             this.button2.BackColor = System.Drawing.Color.IndianRed;
             this.button2.ForeColor = System.Drawing.Color.Black;
-            this.button2.Location = new System.Drawing.Point(214, 130);
+            this.button2.Location = new System.Drawing.Point(214, 172);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(177, 57);
             this.button2.TabIndex = 11;
@@ -172,16 +173,23 @@
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button3
+            // txbPASS
             // 
-            this.button3.BackColor = System.Drawing.Color.IndianRed;
-            this.button3.Location = new System.Drawing.Point(214, 193);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(177, 57);
-            this.button3.TabIndex = 12;
-            this.button3.Text = "Login";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.txbPASS.Location = new System.Drawing.Point(63, 209);
+            this.txbPASS.Name = "txbPASS";
+            this.txbPASS.Size = new System.Drawing.Size(100, 20);
+            this.txbPASS.TabIndex = 13;
+            this.txbPASS.TextChanged += new System.EventHandler(this.txbPASS_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.RosyBrown;
+            this.label1.Location = new System.Drawing.Point(60, 193);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(38, 13);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "Senha";
             // 
             // Form1
             // 
@@ -189,7 +197,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSalmon;
             this.ClientSize = new System.Drawing.Size(448, 398);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.txbPASS);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txbCPF);
@@ -224,7 +233,8 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ColumnHeader CPF;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox txbPASS;
+        private System.Windows.Forms.Label label1;
     }
 }
 

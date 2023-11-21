@@ -157,5 +157,10 @@ namespace PizzariaLN2
             Login TelaLogin = new Login();
             TelaLogin.ShowDialog();
         }
+
+        private void txbPASS_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

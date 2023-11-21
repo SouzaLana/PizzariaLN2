@@ -21,15 +21,13 @@ namespace PizzariaLN2
         private void button1_Click(object sender, EventArgs e)
         {
             Usuario user = new Usuario(
-                txbName1.Text
+                Convert.ToDecimal(txbName1.Text), txbPASS1.Text
                 );
-            Usuario pass = new Usuario(
-                Convert.ToDecimal(txbCPF1.Text)
-                );
+           
 
             //inserir dado
             UsuarioDAO dadosUser = new UsuarioDAO();
-            if (dadosUser.Login(user, pass))
+            if (dadosUser.Login(user))
             {
                 // instânciando um objeto da classe form1 (esses são os comando para abrir outra tela)
                 Form2 tela = new Form2();
@@ -55,7 +53,7 @@ namespace PizzariaLN2
         private void btnClear_Click(object sender, EventArgs e)
         {
             txbName1.Clear();
-            txbCPF1.Clear();
+            txbPASS1.Clear();
         }
     }
 }

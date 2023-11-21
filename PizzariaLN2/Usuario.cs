@@ -40,6 +40,7 @@ namespace PizzariaLN2
         private string _name;
         private decimal _phone;
         private decimal _cpf;
+        private string _pass;
 
         //(2)
         public Usuario(string name,
@@ -58,6 +59,11 @@ namespace PizzariaLN2
             Name = name;
             Phone = phone;
             Cpf = cpf;
+        }
+        public Usuario(decimal cpf, string pass)
+        {
+            Cpf = cpf;
+            Pass = pass;
         }
 
         public Usuario(string name)
@@ -93,6 +99,16 @@ namespace PizzariaLN2
                     throw new Exception("Campo telefone está vazio"); //(4)
                 _phone = value; }
             get { return _phone; }
+        }
+        public string Pass
+        {
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                    throw new Exception("Campo senha está vazio"); //(4)
+                _pass = value;
+            }
+            get { return _pass; }
         }
         public decimal Cpf
         {
