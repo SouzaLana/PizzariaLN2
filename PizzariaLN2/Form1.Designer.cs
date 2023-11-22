@@ -44,6 +44,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.txbPASS = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.senha = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // btnMessage
@@ -101,12 +102,13 @@
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3,
-            this.CPF});
+            this.CPF,
+            this.senha});
             this.listView1.FullRowSelect = true;
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(42, 259);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(332, 97);
+            this.listView1.Size = new System.Drawing.Size(369, 97);
             this.listView1.TabIndex = 9;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -191,6 +193,10 @@
             this.label1.TabIndex = 14;
             this.label1.Text = "Senha";
             // 
+            // senha
+            // 
+            this.senha.Text = "Senha";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -235,6 +241,7 @@
         private System.Windows.Forms.ColumnHeader CPF;
         private System.Windows.Forms.TextBox txbPASS;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ColumnHeader senha;
     }
 }
 

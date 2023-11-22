@@ -72,7 +72,8 @@ namespace PizzariaLN2
                     (int)dr["ID"],
                     (string)dr["NOME"],
                     (decimal)dr["TELEFONE"],
-                    (decimal)dr["CPF"]
+                    (decimal)dr["CPF"],
+                    (string)dr["SENHA"]
                     );
 
                     users.Add(objeto);
@@ -97,11 +98,12 @@ namespace PizzariaLN2
             SqlCommand sqlCommand = new SqlCommand();
 
             sqlCommand.Connection = connection.ReturnConnection();
-            sqlCommand.CommandText = @"INSERT INTO Table_1 VALUES (@nome, @telefone, @cpf)";
+            sqlCommand.CommandText = @"INSERT INTO Table_1 VALUES (@nome, @telefone, @cpf, @senha)";
 
             sqlCommand.Parameters.AddWithValue("@nome", user.Name);
             sqlCommand.Parameters.AddWithValue("@telefone", user.Phone);
             sqlCommand.Parameters.AddWithValue("@cpf", user.Cpf);
+            sqlCommand.Parameters.AddWithValue("@senha", user.Pass);
 
             sqlCommand.ExecuteNonQuery();
         }
@@ -115,13 +117,15 @@ namespace PizzariaLN2
             sqlCommand.CommandText = @"UPDATE Table_1 SET 
             NOME       = @nome, 
             CPF        = @cpf, 
-            TELEFONE   = @telefone  
+            TELEFONE   = @telefone,
+            SENHA       = @senha
             WHERE ID   = @id";
 
             //idêntico ao do botão insert
             sqlCommand.Parameters.AddWithValue("@nome", user.Name);
             sqlCommand.Parameters.AddWithValue("@telefone", user.Phone);
             sqlCommand.Parameters.AddWithValue("@cpf", user.Cpf);
+            sqlCommand.Parameters.AddWithValue("@senha", user.Pass);
             sqlCommand.Parameters.AddWithValue("@id", user.Id);
 
             sqlCommand.ExecuteNonQuery();

@@ -45,20 +45,24 @@ namespace PizzariaLN2
         //(2)
         public Usuario(string name,
                         decimal phone,
-                        decimal cpf)
+                        decimal cpf,
+                        string pass)
         {
             Name = name;
             Phone = phone;
             Cpf = cpf;
+            Pass = pass;
         }
         public Usuario(int id, string name,
                         decimal phone,
-                        decimal cpf)
+                        decimal cpf,
+                        string pass)
         {
             Id = id;
             Name = name;
             Phone = phone;
             Cpf = cpf;
+            Pass = pass;
         }
         public Usuario(decimal cpf, string pass)
         {
