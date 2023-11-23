@@ -54,6 +54,8 @@
     <Compile Include="Dados.Designer.cs">
       <DependentUpon>Dados.cs</DependentUpon>
     </Compile>
+    <Compile Include="Endereco.cs" />
+    <Compile Include="EnderecoDAO.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,6 +84,9 @@
     </Compile>
     <Compile Include="Usuario.cs" />
     <Compile Include="UsuarioDAO.cs" />
+    <EmbeddedResource Include="Dados.resx">
+      <DependentUpon>Dados.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

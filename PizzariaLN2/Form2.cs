@@ -30,10 +30,7 @@ namespace PizzariaLN2
 
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
         {
-            if ( )
-            {
 
-            }
         }
     }
 }
