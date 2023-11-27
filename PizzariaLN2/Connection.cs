@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AssociacaoDesportivaLatina
+namespace PizzariaLN2
 {
     internal class Connection
     {
