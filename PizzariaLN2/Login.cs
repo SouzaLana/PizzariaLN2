@@ -25,7 +25,6 @@ namespace PizzariaLN2
             Usuario user = new Usuario(
                 Convert.ToDecimal(txbName1.Text),
                 hashPass
-
                 );
            
 
