@@ -1,4 +1,4 @@
-﻿using AssociacaoDesportivaLatina;
+﻿using PizzariaLN2;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -168,7 +168,12 @@ namespace PizzariaLN2
 
         private void txbPASS_TextChanged(object sender, EventArgs e)
         {
+            txbPASS.Text = new string('*', txbPASS.Text.Length);
+        }
 
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }

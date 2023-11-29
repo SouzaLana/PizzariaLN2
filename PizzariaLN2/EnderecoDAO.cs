@@ -51,70 +51,72 @@ namespace PizzariaLN2
             }
             return null;
         }
-    }
 
-    public void InsertEnder(Endereco ender)
-    {
-        //esse Connection verde água é o nome da sua classe.
-        Connection connection = new Connection();
-        SqlCommand sqlCommand = new SqlCommand();
 
-        sqlCommand.Connection = connection.ReturnConnection();
-        sqlCommand.CommandText = @"INSERT INTO Table_2 VALUES (@pais, @estado, @cidade, @rua, @num)";
+        public void InsertEnder(Endereco ender)
+        {
+            //esse Connection verde água é o nome da sua classe.
+            Connection connection = new Connection();
+            SqlCommand sqlCommand = new SqlCommand();
 
-        sqlCommand.Parameters.AddWithValue("@pais", ender.Pais);
-        sqlCommand.Parameters.AddWithValue("@estado", ender.Estado);
-        sqlCommand.Parameters.AddWithValue("@cidade", ender.Cidade);
-        sqlCommand.Parameters.AddWithValue("@rua", ender.Rua);
-        sqlCommand.Parameters.AddWithValue("@num", ender.Num);
+            sqlCommand.Connection = connection.ReturnConnection();
+            sqlCommand.CommandText = @"INSERT INTO Table_2 VALUES (@pais, @estado, @cidade, @rua, @num)";
 
-        sqlCommand.ExecuteNonQuery();
-    }
+            sqlCommand.Parameters.AddWithValue("@pais", ender.Pais);
+            sqlCommand.Parameters.AddWithValue("@estado", ender.Estado);
+            sqlCommand.Parameters.AddWithValue("@cidade", ender.Cidade);
+            sqlCommand.Parameters.AddWithValue("@rua", ender.Rua);
+            sqlCommand.Parameters.AddWithValue("@num", ender.Num);
 
-    public void UpdateEnder(Endereco ender)
-    {
-        Connection connection = new Connection();
-        SqlCommand sqlCommand = new SqlCommand();
+            sqlCommand.ExecuteNonQuery();
+        }
 
-        sqlCommand.Connection = connection.ReturnConnection();
-        sqlCommand.CommandText = @"UPDATE Table_2 SET 
+        public void UpdateEnder(Endereco ender)
+        {
+            Connection connection = new Connection();
+            SqlCommand sqlCommand = new SqlCommand();
+
+            sqlCommand.Connection = connection.ReturnConnection();
+            sqlCommand.CommandText = @"UPDATE Table_2 SET 
             PAIS       = @pais,
             ESTADO        = @estado, 
-            CIDADE   = @ciade,
+            CIDADE   = @cidade,
             RUA       = @rua,
             NUMERO  = @num
             WHERE ID   = @id";
 
-        //idêntico ao do botão insert
-        sqlCommand.Parameters.AddWithValue("@pais", ender.Pais);
-        sqlCommand.Parameters.AddWithValue("@estado", ender.Estado);
-        sqlCommand.Parameters.AddWithValue("@cidade", ender.Cidade);
-        sqlCommand.Parameters.AddWithValue("@rua", ender.Rua);
-        sqlCommand.Parameters.AddWithValue("@num", ender.Num);
-        sqlCommand.Parameters.AddWithValue("@id", ender.Id);
+            //idêntico ao do botão insert
+            sqlCommand.Parameters.AddWithValue("@pais", ender.Pais);
+            sqlCommand.Parameters.AddWithValue("@estado", ender.Estado);
+            sqlCommand.Parameters.AddWithValue("@cidade", ender.Cidade);
+            sqlCommand.Parameters.AddWithValue("@rua", ender.Rua);
+            sqlCommand.Parameters.AddWithValue("@num", ender.Num);
+            sqlCommand.Parameters.AddWithValue("@id", ender.Id);
 
-        sqlCommand.ExecuteNonQuery();
-    }
-
-    public void DeleteEnder(int id)
-    {
-        Connection connection = new Connection();
-        SqlCommand sqlCommand = new SqlCommand();
-
-        sqlCommand.Connection = connection.ReturnConnection();
-        sqlCommand.CommandText = @"DELETE FROM Table_2 WHERE Id = @id";
-        sqlCommand.Parameters.AddWithValue("@id", id);
-        try
-        {
             sqlCommand.ExecuteNonQuery();
         }
-        catch (Exception err)
+
+        public void DeleteEnder(int id)
         {
-            throw new Exception("Erro: Problemas ao excluir usuário no banco.\n" + err.Message);
-        }
-        finally
-        {
-            connection.CloseConnection();
+            Connection connection = new Connection();
+            SqlCommand sqlCommand = new SqlCommand();
+
+            sqlCommand.Connection = connection.ReturnConnection();
+            sqlCommand.CommandText = @"DELETE FROM Table_2 WHERE Id = @id";
+            sqlCommand.Parameters.AddWithValue("@id", id);
+            try
+            {
+                sqlCommand.ExecuteNonQuery();
+            }
+            catch (Exception err)
+            {
+                throw new Exception("Erro: Problemas ao excluir usuário no banco.\n" + err.Message);
+            }
+            finally
+            {
+                connection.CloseConnection();
+            }
         }
     }
 }
+

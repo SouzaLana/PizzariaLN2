@@ -116,7 +116,7 @@
             this.txbNum.Name = "txbNum";
             this.txbNum.Size = new System.Drawing.Size(179, 20);
             this.txbNum.TabIndex = 7;
-            this.txbNum.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
+           
             // 
             // label1
             // 
@@ -135,7 +135,7 @@
             this.label2.Size = new System.Drawing.Size(40, 13);
             this.label2.TabIndex = 9;
             this.label2.Text = "Estado";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+           
             // 
             // label3
             // 
@@ -172,6 +172,7 @@
             this.columnHeader3,
             this.columnHeader4,
             this.columnHeader5});
+            this.listView2.FullRowSelect = true;
             this.listView2.HideSelection = false;
             this.listView2.Location = new System.Drawing.Point(86, 278);
             this.listView2.Name = "listView2";
@@ -179,7 +180,7 @@
             this.listView2.TabIndex = 13;
             this.listView2.UseCompatibleStateImageBehavior = false;
             this.listView2.View = System.Windows.Forms.View.Details;
-            this.listView2.SelectedIndexChanged += new System.EventHandler(this.listView2_SelectedIndexChanged);
+            this.listView2.DoubleClick += new System.EventHandler(this.listView2_DoubleClick);
             // 
             // columnHeader1
             // 
@@ -223,6 +224,7 @@
             this.Controls.Add(this.btnSalvar);
             this.Name = "Dados";
             this.Text = "Dados";
+            this.Load += new System.EventHandler(this.Dados_Load_1);
             this.ResumeLayout(false);
             this.PerformLayout();
 

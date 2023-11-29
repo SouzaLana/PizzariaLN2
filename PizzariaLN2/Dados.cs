@@ -29,7 +29,6 @@ namespace PizzariaLN2
             {
                 foreach (Endereco ender in enders)
                 {
-
                     ListViewItem lv2 = new ListViewItem(ender.Id.ToString());
                     lv2.SubItems.Add(ender.Pais);
                     lv2.SubItems.Add(ender.Estado);
@@ -79,21 +78,6 @@ namespace PizzariaLN2
             txbNum.Clear();
 
             UpdateListView();
-        }
-
-        private void Dados_Load(object sender, EventArgs e)
-        {
-            UpdateListView();
-        }
-
-        private void textBox5_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
@@ -156,7 +140,7 @@ namespace PizzariaLN2
             UpdateListView();
         }
 
-        private void listView2_SelectedIndexChanged(object sender, EventArgs e)
+        private void listView2_DoubleClick(object sender, EventArgs e)
         {
             int index;
             index = listView2.FocusedItem.Index;
@@ -166,6 +150,11 @@ namespace PizzariaLN2
             txbCidade.Text = listView2.Items[index].SubItems[3].Text;
             txbRua.Text = listView2.Items[index].SubItems[4].Text;
             txbNum.Text = (listView2.Items[index].SubItems[5].Text);
+        }
+
+        private void Dados_Load_1(object sender, EventArgs e)
+        {
+            UpdateListView();
         }
     }
     

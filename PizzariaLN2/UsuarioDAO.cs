@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -103,7 +104,7 @@ namespace PizzariaLN2
             sqlCommand.Parameters.AddWithValue("@nome", user.Name);
             sqlCommand.Parameters.AddWithValue("@telefone", user.Phone);
             sqlCommand.Parameters.AddWithValue("@cpf", user.Cpf);
-            sqlCommand.Parameters.AddWithValue("@senha", user.Pass);
+            sqlCommand.Parameters.AddWithValue("@senha", Senha.Sha256(user.Pass));
 
             sqlCommand.ExecuteNonQuery();
         }
@@ -125,7 +126,7 @@ namespace PizzariaLN2
             sqlCommand.Parameters.AddWithValue("@nome", user.Name);
             sqlCommand.Parameters.AddWithValue("@telefone", user.Phone);
             sqlCommand.Parameters.AddWithValue("@cpf", user.Cpf);
-            sqlCommand.Parameters.AddWithValue("@senha", user.Pass);
+            sqlCommand.Parameters.AddWithValue("@senha", Senha.Sha256(user.Pass));
             sqlCommand.Parameters.AddWithValue("@id", user.Id);
 
             sqlCommand.ExecuteNonQuery();
@@ -152,5 +153,7 @@ namespace PizzariaLN2
                 connection.CloseConnection();
             }
         }
+
+       
     }
 }

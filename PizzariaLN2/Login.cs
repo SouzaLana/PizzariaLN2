@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -20,8 +21,11 @@ namespace PizzariaLN2
 
         private void button1_Click(object sender, EventArgs e)
         {
+            string hashPass = Senha.Sha256(txbPASS1.Text);
             Usuario user = new Usuario(
-                Convert.ToDecimal(txbName1.Text), txbPASS1.Text
+                Convert.ToDecimal(txbName1.Text),
+                hashPass
+
                 );
            
 
@@ -54,6 +58,11 @@ namespace PizzariaLN2
         {
             txbName1.Clear();
             txbPASS1.Clear();
+        }
+
+        private void txbPASS1_TextChanged(object sender, EventArgs e)
+        {
+            txbPASS1.Text = new string('*', txbPASS1.Text.Length);
         }
     }
 }

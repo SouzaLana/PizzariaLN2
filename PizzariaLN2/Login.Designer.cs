@@ -92,6 +92,7 @@
             this.txbPASS1.Name = "txbPASS1";
             this.txbPASS1.Size = new System.Drawing.Size(234, 23);
             this.txbPASS1.TabIndex = 4;
+            this.txbPASS1.TextChanged += new System.EventHandler(this.txbPASS1_TextChanged);
             // 
             // button2
             // 
