@@ -20,7 +20,9 @@ namespace PizzariaLN2
 
         private void Compra_Load(object sender, EventArgs e)
         {
-            
+            monthCalendar = new MonthCalendar();
+            monthCalendar.Location = new System.Drawing.Point(359, 169);
+            monthCalendar.DateChanged += monthCalendar1_DateChanged;
         }
 
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
