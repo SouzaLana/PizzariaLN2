@@ -39,7 +39,7 @@ namespace PizzariaLN2
                     enders.Add(objeto);
                 }
                 dr.Close();
-                return enders;//Retornar a lista.
+                return enders;//Retornar a lista
             }
             catch (Exception err)
             {
