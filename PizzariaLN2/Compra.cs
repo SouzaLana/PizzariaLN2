@@ -19,21 +19,19 @@ namespace PizzariaLN2
 
         private void Compra_Load(object sender, EventArgs e)
         {
-            MonthCalendar monthCalendar = new MonthCalendar();
-            monthCalendar.Location = new System.Drawing.Point(359, 169);
-            panel1.Controls.Add(monthCalendar);
+            
         }
 
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
         {
+            MonthCalendar monthCalendar = new MonthCalendar();
             DateTime selectDate = e.Start;
             MessageBox.Show($"Data selecionada: {selectDate.ToShortDateString()}\nAgora você pode processar a compra para essa data");
         }
 
         private void btnComprar_Click(object sender, EventArgs e)
         {
-
-            MonthCalendar monthCalendar = new MonthCalendar();
+            
             DateTime selectDate = monthCalendar.SelectionStart;
 
             List<string> pedidos = GetPedidos();

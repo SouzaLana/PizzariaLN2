@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
@@ -37,24 +35,8 @@
             this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.btnComprar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel1.SuspendLayout();
+            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.LightCoral;
-            this.panel1.Controls.Add(this.monthCalendar1);
-            this.panel1.Location = new System.Drawing.Point(359, 169);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(291, 180);
-            this.panel1.TabIndex = 0;
-            // 
-            // monthCalendar1
-            // 
-            this.monthCalendar1.Location = new System.Drawing.Point(33, 9);
-            this.monthCalendar1.Name = "monthCalendar1";
-            this.monthCalendar1.TabIndex = 0;
-            this.monthCalendar1.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateChanged);
             // 
             // checkBox1
             // 
@@ -130,12 +112,20 @@
             this.label1.Text = "Sabores:";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
+            // monthCalendar1
+            // 
+            this.monthCalendar1.Location = new System.Drawing.Point(376, 94);
+            this.monthCalendar1.Name = "monthCalendar1";
+            this.monthCalendar1.TabIndex = 0;
+            this.monthCalendar1.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateChanged);
+            // 
             // Compra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.IndianRed;
             this.ClientSize = new System.Drawing.Size(662, 361);
+            this.Controls.Add(this.monthCalendar1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnComprar);
             this.Controls.Add(this.checkBox5);
@@ -143,20 +133,15 @@
             this.Controls.Add(this.checkBox3);
             this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.panel1);
             this.Name = "Compra";
             this.Text = "Compra";
             this.Load += new System.EventHandler(this.Compra_Load);
-            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.MonthCalendar monthCalendar1;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.CheckBox checkBox3;
@@ -164,5 +149,6 @@
         private System.Windows.Forms.CheckBox checkBox5;
         private System.Windows.Forms.Button btnComprar;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.MonthCalendar monthCalendar1;
     }
 }
