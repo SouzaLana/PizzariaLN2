@@ -12,6 +12,7 @@ namespace PizzariaLN2
 {
     public partial class Compra : Form
     {
+        private MonthCalendar monthCalendar;
         public Compra()
         {
             InitializeComponent();
@@ -24,7 +25,7 @@ namespace PizzariaLN2
 
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
         {
-            MonthCalendar monthCalendar = new MonthCalendar();
+            MonthCalendar monthCalendar = (MonthCalendar)sender;
             DateTime selectDate = e.Start;
             MessageBox.Show($"Data selecionada: {selectDate.ToShortDateString()}\nAgora você pode processar a compra para essa data");
         }
