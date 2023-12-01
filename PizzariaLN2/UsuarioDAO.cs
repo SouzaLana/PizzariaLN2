@@ -74,7 +74,8 @@ namespace PizzariaLN2
                     (string)dr["NOME"],
                     (decimal)dr["TELEFONE"],
                     (decimal)dr["CPF"],
-                    (string)dr["SENHA"]
+                    (string)dr["SENHA"],
+                    (string)dr["EMAIL"]
                     );
 
                     users.Add(objeto);
@@ -99,12 +100,13 @@ namespace PizzariaLN2
             SqlCommand sqlCommand = new SqlCommand();
 
             sqlCommand.Connection = connection.ReturnConnection();
-            sqlCommand.CommandText = @"INSERT INTO Table_1 VALUES (@nome, @telefone, @cpf, @senha)";
+            sqlCommand.CommandText = @"INSERT INTO Table_1 VALUES (@nome, @telefone, @cpf, @senha, @email)";
 
             sqlCommand.Parameters.AddWithValue("@nome", user.Name);
             sqlCommand.Parameters.AddWithValue("@telefone", user.Phone);
             sqlCommand.Parameters.AddWithValue("@cpf", user.Cpf);
             sqlCommand.Parameters.AddWithValue("@senha", Senha.Sha256(user.Pass));
+            sqlCommand.Parameters.AddWithValue("@email", user.Email);
 
             sqlCommand.ExecuteNonQuery();
         }
@@ -119,7 +121,8 @@ namespace PizzariaLN2
             NOME       = @nome, 
             CPF        = @cpf, 
             TELEFONE   = @telefone,
-            SENHA       = @senha
+            SENHA      = @senha,
+            EMAIL      = @email  
             WHERE ID   = @id";
 
             //idêntico ao do botão insert
@@ -127,6 +130,7 @@ namespace PizzariaLN2
             sqlCommand.Parameters.AddWithValue("@telefone", user.Phone);
             sqlCommand.Parameters.AddWithValue("@cpf", user.Cpf);
             sqlCommand.Parameters.AddWithValue("@senha", Senha.Sha256(user.Pass));
+            sqlCommand.Parameters.AddWithValue("@email", user.Email);
             sqlCommand.Parameters.AddWithValue("@id", user.Id);
 
             sqlCommand.ExecuteNonQuery();

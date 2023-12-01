@@ -11,6 +11,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using System.Security.Cryptography;
+using System.Net;
+using System.Net.Mail;
+using System.Linq.Expressions;
 
 namespace PizzariaLN2
 {
@@ -38,6 +41,7 @@ namespace PizzariaLN2
                     lv.SubItems.Add(user.Phone.ToString());
                     lv.SubItems.Add(user.Cpf.ToString());
                     lv.SubItems.Add(user.Pass);
+                    lv.SubItems.Add(user.Email);
                     listView1.Items.Add(lv);
                 }
             }
@@ -58,7 +62,8 @@ namespace PizzariaLN2
                     txbName.Text,
                     Convert.ToDecimal(txbPhone.Text),
                     Convert.ToDecimal(txbCPF.Text),
-                    txbPASS.Text
+                    txbPASS.Text,
+                    txbEmail.Text
                     );
 
                 //Chamando método de inserir (inserção).
@@ -80,6 +85,7 @@ namespace PizzariaLN2
             txbPhone.Clear();
             txbCPF.Clear();
             txbPASS.Clear();
+            txbEmail.Clear();
 
             UpdateListView();
         }
@@ -98,6 +104,7 @@ namespace PizzariaLN2
             txbPhone.Text = listView1.Items[index].SubItems[2].Text;
             txbCPF.Text = listView1.Items[index].SubItems[3].Text;
             txbPASS.Text = listView1.Items[index].SubItems[4].Text;
+            txbEmail.Text = listView1.Items[index].SubItems[5].Text;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -112,7 +119,8 @@ namespace PizzariaLN2
                     txbName.Text,
                     Convert.ToDecimal(txbPhone.Text),
                     Convert.ToDecimal(txbCPF.Text),
-                    txbPASS.Text
+                    txbPASS.Text,
+                    txbEmail.Text
                     );
 
                 //Chamando método de inserir (inserção).
@@ -134,6 +142,7 @@ namespace PizzariaLN2
             txbPhone.Clear();
             txbCPF.Clear();
             txbPASS.Clear();
+            txbEmail.Clear();
 
             UpdateListView();
         }
@@ -155,6 +164,7 @@ namespace PizzariaLN2
             txbPhone.Clear();
             txbCPF.Clear();
             txbPASS.Clear();
+            txbEmail.Clear();
 
             //Atualizando listView
             UpdateListView();
@@ -169,11 +179,6 @@ namespace PizzariaLN2
         private void txbPASS_TextChanged(object sender, EventArgs e)
         {
             txbPASS.Text = new string('*', txbPASS.Text.Length);
-        }
-
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
         }
     }
 }

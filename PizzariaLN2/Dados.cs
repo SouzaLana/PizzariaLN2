@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Net;
+using System.Net.Mail;
+using System.Linq.Expressions;
 
 namespace PizzariaLN2
 {
@@ -155,6 +158,83 @@ namespace PizzariaLN2
         private void Dados_Load_1(object sender, EventArgs e)
         {
             UpdateListView();
+        }
+
+        private void rbtnEmail_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                List<Usuario> users = DadosUser(); ;
+                List<Endereco> enders = DadosEndereco();
+
+                string destinatario = "e-mail";
+                string assunto = "assunto";
+                string  CorpoEmail = corpoEmail(users, enders);
+
+                EnviarEmail(destinatario, assunto, CorpoEmail);
+
+                MessageBox.Show("E-mail enviado com sucesso!",
+                    "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Erro ao enviar e-mail!",
+                    "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private List<Usuario> DadosUser()
+        {
+            UsuarioDAO dadosUser = new UsuarioDAO();
+            return dadosUser.SelectUser();
+        }
+
+        private List<Endereco> DadosEndereco()
+        {
+            EnderecoDAO dadosEndereco = new EnderecoDAO();
+            return dadosEndereco.SelectEnder();
+        }
+
+        private string corpoEmail(List<Usuario> users, List<Endereco> enders)
+        {
+            StringBuilder CorpoEmail = new StringBuilder();
+            CorpoEmail.AppendLine("assunto");
+
+            foreach (var endereco in enders)
+            {
+                CorpoEmail.AppendLine($"País: {endereco.Pais}, Estado: {endereco.Estado}, Cidade: {endereco.Cidade}, Rua: {endereco.Rua}, Número: {endereco.Num}");
+            }
+
+            foreach (var usuario in users)
+            {
+                CorpoEmail.AppendLine($"Nome: {usuario.Name}, Telefone: {usuario.Phone}, CPF: {usuario.Cpf}");
+            }
+
+            return CorpoEmail.ToString();
+        }
+
+        private void EnviarEmail (string destinatario, string assunto, string CorpoEmail)
+        {
+            string servidor = "smtp.gmail.com";
+            int porta = 587;
+            string usuarioS = "trabalhopr2023@gmail.com";
+            string senhaS = "TrabalhoPR-2";
+
+            SmtpClient clientSmtp = new SmtpClient(servidor)
+            {
+                Port = porta,
+                Credentials = new NetworkCredential(usuarioS, senhaS),
+                EnableSsl = true
+            };
+
+            MailMessage message = new MailMessage(usuarioS, destinatario)
+            {
+                Subject = assunto,
+                Body = CorpoEmail
+            };
+
+            clientSmtp.Send(message);
         }
     }
     

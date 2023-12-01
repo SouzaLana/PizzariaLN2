@@ -47,6 +47,7 @@
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.rbtnEmail = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // btnSalvar
@@ -84,44 +85,43 @@
             // 
             // txbEstado
             // 
-            this.txbEstado.Location = new System.Drawing.Point(74, 100);
+            this.txbEstado.Location = new System.Drawing.Point(75, 100);
             this.txbEstado.Name = "txbEstado";
             this.txbEstado.Size = new System.Drawing.Size(179, 20);
             this.txbEstado.TabIndex = 3;
             // 
             // txbPais
             // 
-            this.txbPais.Location = new System.Drawing.Point(74, 53);
+            this.txbPais.Location = new System.Drawing.Point(75, 53);
             this.txbPais.Name = "txbPais";
             this.txbPais.Size = new System.Drawing.Size(179, 20);
             this.txbPais.TabIndex = 4;
             // 
             // txbCidade
             // 
-            this.txbCidade.Location = new System.Drawing.Point(74, 140);
+            this.txbCidade.Location = new System.Drawing.Point(75, 140);
             this.txbCidade.Name = "txbCidade";
             this.txbCidade.Size = new System.Drawing.Size(179, 20);
             this.txbCidade.TabIndex = 5;
             // 
             // txbRua
             // 
-            this.txbRua.Location = new System.Drawing.Point(74, 178);
+            this.txbRua.Location = new System.Drawing.Point(75, 178);
             this.txbRua.Name = "txbRua";
             this.txbRua.Size = new System.Drawing.Size(179, 20);
             this.txbRua.TabIndex = 6;
             // 
             // txbNum
             // 
-            this.txbNum.Location = new System.Drawing.Point(74, 224);
+            this.txbNum.Location = new System.Drawing.Point(75, 224);
             this.txbNum.Name = "txbNum";
             this.txbNum.Size = new System.Drawing.Size(179, 20);
             this.txbNum.TabIndex = 7;
-           
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(74, 37);
+            this.label1.Location = new System.Drawing.Point(75, 37);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(29, 13);
             this.label1.TabIndex = 8;
@@ -130,17 +130,16 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(74, 84);
+            this.label2.Location = new System.Drawing.Point(75, 84);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(40, 13);
             this.label2.TabIndex = 9;
             this.label2.Text = "Estado";
-           
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(74, 124);
+            this.label3.Location = new System.Drawing.Point(75, 124);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(40, 13);
             this.label3.TabIndex = 10;
@@ -149,7 +148,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(74, 162);
+            this.label4.Location = new System.Drawing.Point(75, 162);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(27, 13);
             this.label4.TabIndex = 11;
@@ -158,7 +157,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(74, 208);
+            this.label5.Location = new System.Drawing.Point(75, 208);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(44, 13);
             this.label5.TabIndex = 12;
@@ -174,7 +173,7 @@
             this.columnHeader5});
             this.listView2.FullRowSelect = true;
             this.listView2.HideSelection = false;
-            this.listView2.Location = new System.Drawing.Point(86, 278);
+            this.listView2.Location = new System.Drawing.Point(87, 291);
             this.listView2.Name = "listView2";
             this.listView2.Size = new System.Drawing.Size(309, 97);
             this.listView2.TabIndex = 13;
@@ -202,12 +201,25 @@
             // 
             this.columnHeader5.Text = "Número";
             // 
+            // rbtnEmail
+            // 
+            this.rbtnEmail.AutoSize = true;
+            this.rbtnEmail.Location = new System.Drawing.Point(75, 257);
+            this.rbtnEmail.Name = "rbtnEmail";
+            this.rbtnEmail.Size = new System.Drawing.Size(221, 17);
+            this.rbtnEmail.TabIndex = 14;
+            this.rbtnEmail.TabStop = true;
+            this.rbtnEmail.Text = "Enviar e-mail com confirmação dos dados";
+            this.rbtnEmail.UseVisualStyleBackColor = true;
+            this.rbtnEmail.CheckedChanged += new System.EventHandler(this.rbtnEmail_CheckedChanged);
+            // 
             // Dados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.RosyBrown;
             this.ClientSize = new System.Drawing.Size(493, 417);
+            this.Controls.Add(this.rbtnEmail);
             this.Controls.Add(this.listView2);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -251,5 +263,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.RadioButton rbtnEmail;
     }
 }

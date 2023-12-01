@@ -41,43 +41,38 @@ namespace PizzariaLN2
         private decimal _phone;
         private decimal _cpf;
         private string _pass;
+        private string _email;  
 
         //(2)
         public Usuario(string name,
                         decimal phone,
                         decimal cpf,
-                        string pass)
+                        string pass,
+                        string email)
         {
             Name = name;
             Phone = phone;
             Cpf = cpf;
             Pass = pass;
+            Email = email;
         }
         public Usuario(int id, string name,
                         decimal phone,
                         decimal cpf,
-                        string pass)
+                        string pass,
+                        string email)
         {
             Id = id;
             Name = name;
             Phone = phone;
             Cpf = cpf;
             Pass = pass;
+            Email = email;
         }
         public Usuario(decimal cpf, string pass)
         {
             Cpf = cpf;
             Pass = pass;
-        }
-
-        public Usuario(string name)
-        {
-            Name = name;
-        }
-
-        public Usuario(decimal cpf)
-        {
-            Cpf = cpf;
         }
 
         //(3)
@@ -121,6 +116,16 @@ namespace PizzariaLN2
                     throw new Exception("Campo CPF está vazio");
                 _cpf = value; }
             get { return _cpf; }
+        }
+        public string Email
+        {
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                    throw new Exception("Campo email está vazio");
+                _email = value;
+            }
+            get { return _email; }
         }
     }
 }
