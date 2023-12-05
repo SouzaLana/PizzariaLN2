@@ -100,13 +100,13 @@ namespace PizzariaLN2
             SqlCommand sqlCommand = new SqlCommand();
 
             sqlCommand.Connection = connection.ReturnConnection();
-            sqlCommand.CommandText = @"INSERT INTO Table_1 VALUES (@nome, @telefone, @cpf, @senha, @email)";
+            sqlCommand.CommandText = @"INSERT INTO Table_1 VALUES (@NOME, @TELEFONE, @CPF, @SENHA, @EMAIL)";
 
-            sqlCommand.Parameters.AddWithValue("@nome", user.Name);
-            sqlCommand.Parameters.AddWithValue("@telefone", user.Phone);
-            sqlCommand.Parameters.AddWithValue("@cpf", user.Cpf);
-            sqlCommand.Parameters.AddWithValue("@senha", Senha.Sha256(user.Pass));
-            sqlCommand.Parameters.AddWithValue("@email", user.Email);
+            sqlCommand.Parameters.AddWithValue("@NOME", user.Name);
+            sqlCommand.Parameters.AddWithValue("@TELEFONE", user.Phone);
+            sqlCommand.Parameters.AddWithValue("@CPF", user.Cpf);
+            sqlCommand.Parameters.AddWithValue("@SENHA", Senha.Sha256(user.Pass));
+            sqlCommand.Parameters.AddWithValue("@EMAIL", user.Email);
 
             sqlCommand.ExecuteNonQuery();
         }

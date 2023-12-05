@@ -12,6 +12,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Net;
 using System.Net.Mail;
 using System.Linq.Expressions;
+using System.Data.SqlClient;
 
 namespace PizzariaLN2
 {
@@ -167,7 +168,13 @@ namespace PizzariaLN2
                 List<Usuario> users = DadosUser(); ;
                 List<Endereco> enders = DadosEndereco();
 
-                string destinatario = "e-mail";
+                Connection conn = new Connection();
+                SqlCommand sqlCom = new SqlCommand();
+
+                sqlCom.Connection = conn.ReturnConnection();
+                sqlCom.CommandText = "SELECT * FROM Table_1";
+
+                string destinatario = "EMAIL";
                 string assunto = "assunto";
                 string  CorpoEmail = corpoEmail(users, enders);
 

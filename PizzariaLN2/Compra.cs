@@ -35,15 +35,13 @@ namespace PizzariaLN2
 
         private void btnComprar_Click(object sender, EventArgs e)
         {
-            
-            DateTime selectDate = monthCalendar.SelectionStart;
 
             List<string> pedidos = GetPedidos();
 
             if(pedidos.Count > 0)
             {
                 string itens = string.Join(", ", pedidos);
-                MessageBox.Show($"Compra efetuada!\nItens: {itens}\nData: { selectDate.ToShortDateString()}");
+                MessageBox.Show($"Compra efetuada!\nItens: {itens}");
             }
             else
             {

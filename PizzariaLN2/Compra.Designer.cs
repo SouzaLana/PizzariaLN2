@@ -73,9 +73,9 @@
             this.checkBox4.AutoSize = true;
             this.checkBox4.Location = new System.Drawing.Point(110, 169);
             this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(61, 17);
+            this.checkBox4.Size = new System.Drawing.Size(64, 17);
             this.checkBox4.TabIndex = 9;
-            this.checkBox4.Text = "Catupiri";
+            this.checkBox4.Text = "Catupiry";
             this.checkBox4.UseVisualStyleBackColor = true;
             // 
             // checkBox5
