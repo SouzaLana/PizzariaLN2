@@ -56,7 +56,7 @@ namespace PizzariaLN2
             set
             {
                 if (string.IsNullOrEmpty(value))
-                    throw new Exception("Campo nome está vazio");
+                    throw new Exception("Campo país está vazio");
                 _pais = value;
             }
             get { return _pais; }
@@ -67,7 +67,7 @@ namespace PizzariaLN2
             set
             {
                 if (string.IsNullOrEmpty(value))
-                    throw new Exception("Campo nome está vazio");
+                    throw new Exception("Campo estado está vazio");
                 _estado = value;
             }
             get { return _estado; }
@@ -78,7 +78,7 @@ namespace PizzariaLN2
             set
             {
                 if (string.IsNullOrEmpty(value))
-                    throw new Exception("Campo nome está vazio");
+                    throw new Exception("Campo cidade está vazio");
                 _cidade = value;
             }
             get { return _cidade; }
@@ -89,7 +89,7 @@ namespace PizzariaLN2
             set
             {
                 if (string.IsNullOrEmpty(value))
-                    throw new Exception("Campo nome está vazio");
+                    throw new Exception("Campo rua está vazio");
                 _rua = value;
             }
             get { return _rua; }

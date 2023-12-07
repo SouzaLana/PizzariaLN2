@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             this.lblPizza = new System.Windows.Forms.Label();
-            this.Calendario = new System.Windows.Forms.MonthCalendar();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.btnCompra = new System.Windows.Forms.Button();
@@ -47,15 +46,6 @@
             this.lblPizza.Size = new System.Drawing.Size(357, 83);
             this.lblPizza.TabIndex = 0;
             this.lblPizza.Text = "PizzasLN";
-            // 
-            // Calendario
-            // 
-            this.Calendario.BackColor = System.Drawing.Color.SandyBrown;
-            this.Calendario.Location = new System.Drawing.Point(18, 448);
-            this.Calendario.Name = "Calendario";
-            this.Calendario.TabIndex = 1;
-            this.Calendario.TrailingForeColor = System.Drawing.Color.Tomato;
-            this.Calendario.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateChanged);
             // 
             // button1
             // 
@@ -106,7 +96,6 @@
             this.Controls.Add(this.btnCompra);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.Calendario);
             this.Controls.Add(this.lblPizza);
             this.Name = "Form2";
             this.Text = "Form2";
@@ -118,7 +107,6 @@
         #endregion
 
         private System.Windows.Forms.Label lblPizza;
-        private System.Windows.Forms.MonthCalendar Calendario;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnCompra;

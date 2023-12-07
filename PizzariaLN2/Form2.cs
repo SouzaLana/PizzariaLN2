@@ -12,9 +12,11 @@ namespace PizzariaLN2
 {
     public partial class Form2 : Form
     {
-        public Form2()
+        Usuario usuarioLogado;
+        public Form2(Usuario usuario)
         {
             InitializeComponent();
+            this.usuarioLogado = usuario;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -25,7 +27,7 @@ namespace PizzariaLN2
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Dados tela = new Dados();
+            Dados tela = new Dados(usuarioLogado);
             tela.ShowDialog();
         }
 

@@ -30,10 +30,11 @@ namespace PizzariaLN2
 
             //inserir dado
             UsuarioDAO dadosUser = new UsuarioDAO();
-            if (dadosUser.Login(user))
+            user = dadosUser.Login(user);
+            if (user != null)
             {
                 // instânciando um objeto da classe form1 (esses são os comando para abrir outra tela)
-                Form2 tela = new Form2();
+                Form2 tela = new Form2(user);
                 tela.ShowDialog();
             }
             else

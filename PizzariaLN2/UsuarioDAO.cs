@@ -20,7 +20,7 @@ namespace PizzariaLN2
         //(1)
         //void é quando não tem que retornar nada.
 
-        public bool Login(Usuario user)
+        public Usuario Login(Usuario user)
         {
             Connection conn = new Connection();
             SqlCommand sqlCom = new SqlCommand();
@@ -36,8 +36,20 @@ namespace PizzariaLN2
                 SqlDataReader dr = sqlCom.ExecuteReader();
                 if (dr.HasRows)
                 {
+                    Usuario usuarioLogado = null;
+                    while (dr.Read())
+                    {
+                         usuarioLogado = new Usuario(
+                    (int)dr["ID"],
+                    (string)dr["NOME"],
+                    (decimal)dr["TELEFONE"],
+                    (decimal)dr["CPF"],
+                    (string)dr["SENHA"],
+                    (string)dr["EMAIL"]
+                    );
+                    }
                     dr.Close();
-                    return true;
+                    return usuarioLogado;
                 }
                    
             }
@@ -50,7 +62,7 @@ namespace PizzariaLN2
 
                 conn.CloseConnection();
             }
-            return false;
+            return null;
         }
 
         public List<Usuario> SelectUser()

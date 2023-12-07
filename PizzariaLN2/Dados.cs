@@ -19,9 +19,12 @@ namespace PizzariaLN2
     public partial class Dados : Form
     {
         private int id;
-        public Dados()
+        Endereco ender;
+        Usuario usuarioLogado;
+        public Dados(Usuario usuario)
         {
             InitializeComponent();
+            usuarioLogado = usuario;
         }
         private void UpdateListView()
         {
@@ -53,7 +56,7 @@ namespace PizzariaLN2
             try
             {
                 //esse verde água é o nome da sua classe.
-                Endereco ender = new Endereco(
+                ender = new Endereco(
                     txbPais.Text,
                     txbEstado.Text,
                     txbCidade.Text,
@@ -64,6 +67,9 @@ namespace PizzariaLN2
                 //Chamando método de inserir (inserção).
                 EnderecoDAO dadosEndereco = new EnderecoDAO();
                 dadosEndereco.InsertEnder(ender);
+
+                if (rbtnEmail.Checked)
+                    EnviarEmail();
 
                 MessageBox.Show("Cadastrado com sucesso",
                     "AVISO",
@@ -161,22 +167,13 @@ namespace PizzariaLN2
             UpdateListView();
         }
 
-        private void rbtnEmail_CheckedChanged(object sender, EventArgs e)
+        private void EnviarEmail()
         {
             try
             {
-                List<Usuario> users = DadosUser(); ;
-                List<Endereco> enders = DadosEndereco();
-
-                Connection conn = new Connection();
-                SqlCommand sqlCom = new SqlCommand();
-
-                sqlCom.Connection = conn.ReturnConnection();
-                sqlCom.CommandText = "SELECT * FROM Table_1";
-
-                string destinatario = "EMAIL";
-                string assunto = "assunto";
-                string  CorpoEmail = corpoEmail(users, enders);
+                string destinatario = usuarioLogado.Email;
+                string assunto = "Novo endereço cadastrado";
+                string CorpoEmail = corpoEmail();
 
                 EnviarEmail(destinatario, assunto, CorpoEmail);
 
@@ -189,6 +186,10 @@ namespace PizzariaLN2
                 MessageBox.Show("Erro ao enviar e-mail!",
                     "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        private void rbtnEmail_CheckedChanged(object sender, EventArgs e)
+        {
+           
         }
 
         private List<Usuario> DadosUser()
@@ -203,45 +204,63 @@ namespace PizzariaLN2
             return dadosEndereco.SelectEnder();
         }
 
-        private string corpoEmail(List<Usuario> users, List<Endereco> enders)
+        private string corpoEmail()
         {
             StringBuilder CorpoEmail = new StringBuilder();
             CorpoEmail.AppendLine("assunto");
 
-            foreach (var endereco in enders)
-            {
-                CorpoEmail.AppendLine($"País: {endereco.Pais}, Estado: {endereco.Estado}, Cidade: {endereco.Cidade}, Rua: {endereco.Rua}, Número: {endereco.Num}");
-            }
+                CorpoEmail.AppendLine($"País: {ender.Pais}, Estado: {ender.Estado}, Cidade: {ender.Cidade}, Rua: {ender.Rua}, Número: {ender.Num}");
+            
 
-            foreach (var usuario in users)
-            {
-                CorpoEmail.AppendLine($"Nome: {usuario.Name}, Telefone: {usuario.Phone}, CPF: {usuario.Cpf}");
-            }
+                CorpoEmail.AppendLine($"Nome: {usuarioLogado.Name}, Telefone: {usuarioLogado.Phone}, CPF: {usuarioLogado.Cpf}");
+            
 
             return CorpoEmail.ToString();
         }
 
         private void EnviarEmail (string destinatario, string assunto, string CorpoEmail)
         {
-            string servidor = "smtp.gmail.com";
-            int porta = 587;
-            string usuarioS = "trabalhopr2023@gmail.com";
-            string senhaS = "TrabalhoPR-2";
-
-            SmtpClient clientSmtp = new SmtpClient(servidor)
+            MailMessage mail = new MailMessage
             {
-                Port = porta,
-                Credentials = new NetworkCredential(usuarioS, senhaS),
-                EnableSsl = true
+                From = new MailAddress("trabalhopr2023@gmail.com")
+            };
+            SmtpClient smtp = new SmtpClient
+            {
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential("trabalhopr2023@gmail.com", "TrabalhoPR-2"),
+                Host = "smtp.gmail.com"
             };
 
-            MailMessage message = new MailMessage(usuarioS, destinatario)
-            {
-                Subject = assunto,
-                Body = CorpoEmail
-            };
+            //recipient
+            mail.To.Add(new MailAddress("trabalhopr2023@gmail.com"));
 
-            clientSmtp.Send(message);
+            //mail.IsBodyHtml = true;
+
+            mail.Body = CorpoEmail;
+            smtp.Send(mail);
+
+            //string servidor = "smtp.gmail.com";
+            //int porta = 587;
+            //string usuarioS = "trabalhopr2023@gmail.com";
+            //string senhaS = "TrabalhoPR-2";
+
+            //SmtpClient clientSmtp = new SmtpClient(servidor)
+            //{
+            //    Port = porta,
+            //    Credentials = new NetworkCredential(usuarioS, senhaS),
+            //    EnableSsl = true
+            //};
+
+            //MailMessage message = new MailMessage(usuarioS, destinatario)
+            //{
+            //    Subject = assunto,
+            //    Body = CorpoEmail
+            //};
+
+            //clientSmtp.Send(message);
         }
     }
     
